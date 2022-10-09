@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::{collections::HashMap, fs::read_to_string, ptr::null};
 
 /// .
 fn main() {
@@ -20,5 +20,14 @@ fn main() {
     let d = dep_map.contains_key("dev");
 
     println!("deps {:?} , {} ", dep_map, d);
-    
+
+    let c = read_content();
+
+    let content = c;
+
+    println!("{}", content.ok().unwrap())
+}
+
+fn read_content() -> Result<String, std::io::Error> {
+    read_to_string("/etc/hosts")
 }
